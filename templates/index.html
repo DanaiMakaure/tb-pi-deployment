@@ -1,0 +1,2722 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TB Guard | Chest X-ray Screening
+    </title>
+
+
+    <style>
+
+        /* =========================================================
+           ROOT
+        ========================================================= */
+
+        :root {
+
+            --page: #f7f5f0;
+            --white: #ffffff;
+            --soft: #fbfaf7;
+
+            --teal: #183c3a;
+            --teal-2: #20514d;
+            --teal-3: #2b6862;
+
+            --sage: #dfe9e3;
+            --sage-soft: #f0f5f2;
+
+            --text: #20302e;
+
+            --muted: #687672;
+            --muted-2: #8a9591;
+
+            --border: #dde1dc;
+
+            --success: #39705c;
+            --success-bg: #eef7f2;
+
+            --danger: #a34d48;
+            --danger-bg: #fff3f1;
+
+            --shadow:
+                0 1px 2px rgba(24, 60, 58, 0.03),
+                0 12px 34px rgba(24, 60, 58, 0.055);
+
+        }
+
+
+        /* =========================================================
+           RESET
+        ========================================================= */
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: var(--page);
+
+            color: var(--text);
+
+            -webkit-font-smoothing:
+                antialiased;
+
+        }
+
+
+        button,
+        input {
+
+            font: inherit;
+
+        }
+
+
+        button {
+
+            cursor: pointer;
+
+        }
+
+
+        a {
+
+            text-decoration: none;
+
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .site-header {
+
+            border-bottom:
+                1px solid
+                rgba(32, 81, 77, 0.10);
+
+            background:
+                rgba(247, 245, 240, 0.97);
+
+        }
+
+
+        .header-inner {
+
+            width:
+                min(
+                    1160px,
+                    calc(100% - 48px)
+                );
+
+            min-height: 80px;
+
+            margin:
+                0 auto;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+
+        }
+
+
+        /* =========================================================
+           BRAND
+        ========================================================= */
+
+        .brand {
+
+            display: flex;
+
+            align-items:
+                center;
+
+            gap: 13px;
+
+        }
+
+
+        .brand-mark {
+
+            width: 43px;
+            height: 43px;
+
+            border-radius: 13px;
+
+            display: grid;
+
+            place-items:
+                center;
+
+            background:
+                var(--teal);
+
+            color: white;
+
+        }
+
+
+        .brand-mark svg {
+
+            width: 23px;
+            height: 23px;
+
+        }
+
+
+        .brand-name {
+
+            display: block;
+
+            color:
+                var(--teal);
+
+            font-size: 18px;
+
+            font-weight: 720;
+
+        }
+
+
+        .brand-subtitle {
+
+            display: block;
+
+            margin-top: 2px;
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+        }
+
+
+        /* =========================================================
+           HEADER ACTIONS
+        ========================================================= */
+
+        .header-actions {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap: 10px;
+
+        }
+
+
+        .database-link {
+
+            min-height: 40px;
+
+            padding:
+                0 14px;
+
+            border:
+                1px solid
+                #cfd7d1;
+
+            border-radius:
+                10px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap: 8px;
+
+            background:
+                var(--white);
+
+            color:
+                var(--teal-2);
+
+            font-size: 12px;
+
+            font-weight: 680;
+
+            transition:
+                0.16s ease;
+
+        }
+
+
+        .database-link:hover {
+
+            background:
+                var(--sage-soft);
+
+            border-color:
+                #aebeb4;
+
+        }
+
+
+        .database-link svg {
+
+            width: 17px;
+            height: 17px;
+
+        }
+
+
+        .prototype-badge {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap: 7px;
+
+            padding:
+                8px 12px;
+
+            border:
+                1px solid
+                #d7ddd8;
+
+            border-radius:
+                999px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.55
+                );
+
+            color:
+                var(--muted);
+
+            font-size: 11px;
+
+            font-weight: 650;
+
+            white-space:
+                nowrap;
+
+        }
+
+
+        .prototype-badge::before {
+
+            content: "";
+
+            width: 7px;
+            height: 7px;
+
+            border-radius:
+                50%;
+
+            background:
+                #6d9685;
+
+        }
+
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .page {
+
+            width:
+                min(
+                    1040px,
+                    calc(100% - 48px)
+                );
+
+            margin:
+                0 auto;
+
+            padding:
+                58px 0 48px;
+
+        }
+
+
+        /* =========================================================
+           INTRO
+        ========================================================= */
+
+        .intro {
+
+            max-width:
+                760px;
+
+            margin-bottom:
+                30px;
+
+        }
+
+
+        .kicker {
+
+            display: block;
+
+            margin-bottom:
+                13px;
+
+            color:
+                var(--teal-3);
+
+            font-size:
+                12px;
+
+            font-weight:
+                750;
+
+            letter-spacing:
+                0.08em;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .intro h1 {
+
+            color:
+                var(--teal);
+
+            font-size:
+                clamp(
+                    32px,
+                    4.5vw,
+                    48px
+                );
+
+            line-height:
+                1.08;
+
+            letter-spacing:
+                -1.55px;
+
+            font-weight:
+                680;
+
+        }
+
+
+        .intro p {
+
+            max-width:
+                690px;
+
+            margin-top:
+                17px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                15px;
+
+            line-height:
+                1.72;
+
+        }
+
+
+        /* =========================================================
+           SYSTEM STATUS
+        ========================================================= */
+
+        .system-strip {
+
+            margin-bottom:
+                24px;
+
+            padding:
+                12px 15px;
+
+            border:
+                1px solid
+                #d9e4dd;
+
+            border-radius:
+                11px;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+
+            background:
+                var(--sage-soft);
+
+        }
+
+
+        .system-status {
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            gap: 9px;
+
+            color:
+                var(--success);
+
+            font-size:
+                12px;
+
+            font-weight:
+                650;
+
+        }
+
+
+        .status-dot {
+
+            width: 8px;
+            height: 8px;
+
+            border-radius:
+                50%;
+
+            background:
+                var(--success);
+
+        }
+
+
+        .system-strip small {
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+
+        }
+
+
+        /* =========================================================
+           MAIN CARD
+        ========================================================= */
+
+        .screen-card {
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                22px;
+
+            background:
+                var(--white);
+
+            box-shadow:
+                var(--shadow);
+
+        }
+
+
+        .card-header {
+
+            padding:
+                26px 30px 23px;
+
+            border-bottom:
+                1px solid
+                #ecece7;
+
+            display:
+                flex;
+
+            align-items:
+                flex-start;
+
+            justify-content:
+                space-between;
+
+            gap: 24px;
+
+        }
+
+
+        .card-header h2 {
+
+            color:
+                var(--teal);
+
+            font-size:
+                19px;
+
+            font-weight:
+                680;
+
+        }
+
+
+        .card-header p {
+
+            max-width:
+                690px;
+
+            margin-top:
+                7px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                13px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        .step-chip {
+
+            flex:
+                0 0 auto;
+
+            padding:
+                7px 10px;
+
+            border-radius:
+                999px;
+
+            background:
+                var(--sage-soft);
+
+            color:
+                var(--teal-3);
+
+            font-size:
+                10px;
+
+            font-weight:
+                750;
+
+            letter-spacing:
+                0.05em;
+
+            text-transform:
+                uppercase;
+
+        }
+
+
+        .card-body {
+
+            padding:
+                30px;
+
+        }
+
+
+        .card-footer {
+
+            min-height:
+                80px;
+
+            padding:
+                17px 30px;
+
+            border-top:
+                1px solid
+                #ecece7;
+
+            background:
+                #fdfdfb;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+
+        }
+
+
+        .footer-copy {
+
+            max-width:
+                600px;
+
+            color:
+                var(--muted-2);
+
+            font-size:
+                11px;
+
+            line-height:
+                1.55;
+
+        }
+
+
+        /* =========================================================
+           UPLOAD
+        ========================================================= */
+
+        #xrayInput {
+
+            display:
+                none;
+
+        }
+
+
+        .drop-zone {
+
+            min-height:
+                350px;
+
+            padding:
+                48px 30px;
+
+            border:
+                1.5px dashed
+                #bfcac3;
+
+            border-radius:
+                17px;
+
+            background:
+                #fafbf9;
+
+            display:
+                flex;
+
+            flex-direction:
+                column;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            text-align:
+                center;
+
+            transition:
+                0.18s ease;
+
+            cursor:
+                pointer;
+
+        }
+
+
+        .drop-zone:hover,
+        .drop-zone.dragging {
+
+            border-color:
+                #73978b;
+
+            background:
+                #f4f8f5;
+
+        }
+
+
+        .upload-icon {
+
+            width: 62px;
+            height: 62px;
+
+            margin-bottom:
+                21px;
+
+            border-radius:
+                18px;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+            background:
+                var(--sage);
+
+            color:
+                var(--teal-2);
+
+        }
+
+
+        .upload-icon svg {
+
+            width: 28px;
+
+        }
+
+
+        .drop-zone h3 {
+
+            color:
+                var(--teal);
+
+            font-size:
+                19px;
+
+            font-weight:
+                680;
+
+        }
+
+
+        .drop-zone p {
+
+            margin-top:
+                9px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                14px;
+
+        }
+
+
+        .drop-zone p span {
+
+            color:
+                var(--teal-3);
+
+            font-weight:
+                680;
+
+        }
+
+
+        .drop-zone small {
+
+            margin-top:
+                17px;
+
+            color:
+                var(--muted-2);
+
+            font-size:
+                11px;
+
+        }
+
+
+        /* =========================================================
+           IMAGE PREVIEW
+        ========================================================= */
+
+        .upload-preview {
+
+            display:
+                none;
+
+            grid-template-columns:
+                minmax(
+                    260px,
+                    390px
+                )
+                1fr;
+
+            gap: 34px;
+
+            align-items:
+                center;
+
+        }
+
+
+        .upload-preview.visible {
+
+            display:
+                grid;
+
+        }
+
+
+        .image-frame {
+
+            height:
+                390px;
+
+            overflow:
+                hidden;
+
+            border:
+                1px solid
+                #d9ddda;
+
+            border-radius:
+                16px;
+
+            background:
+                #202525;
+
+            display:
+                grid;
+
+            place-items:
+                center;
+
+        }
+
+
+        .image-frame img {
+
+            width:
+                100%;
+
+            height:
+                100%;
+
+            object-fit:
+                contain;
+
+        }
+
+
+        .ready-pill {
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            gap: 7px;
+
+            margin-bottom:
+                18px;
+
+            padding:
+                7px 10px;
+
+            border-radius:
+                999px;
+
+            background:
+                var(--success-bg);
+
+            color:
+                var(--success);
+
+            font-size:
+                11px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .file-name {
+
+            font-size:
+                20px;
+
+            font-weight:
+                680;
+
+            line-height:
+                1.35;
+
+            overflow-wrap:
+                anywhere;
+
+        }
+
+
+        .metadata {
+
+            margin-top:
+                22px;
+
+            border-top:
+                1px solid
+                #eceeea;
+
+            border-bottom:
+                1px solid
+                #eceeea;
+
+        }
+
+
+        .metadata-row {
+
+            min-height:
+                46px;
+
+            border-bottom:
+                1px solid
+                #eceeea;
+
+            display:
+                flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                space-between;
+
+            gap: 20px;
+
+            font-size:
+                12px;
+
+        }
+
+
+        .metadata-row:last-child {
+
+            border-bottom:
+                0;
+
+        }
+
+
+        .metadata-row span {
+
+            color:
+                var(--muted);
+
+        }
+
+
+        .metadata-row strong {
+
+            font-size:
+                12px;
+
+            font-weight:
+                650;
+
+            text-align:
+                right;
+
+        }
+
+
+        .preview-actions {
+
+            margin-top:
+                21px;
+
+            display:
+                flex;
+
+            gap: 9px;
+
+            flex-wrap:
+                wrap;
+
+        }
+
+
+        /* =========================================================
+           BUTTONS
+        ========================================================= */
+
+        .button {
+
+            min-height:
+                44px;
+
+            padding:
+                0 17px;
+
+            border-radius:
+                10px;
+
+            display:
+                inline-flex;
+
+            align-items:
+                center;
+
+            justify-content:
+                center;
+
+            gap: 8px;
+
+            border: none;
+
+            font-size:
+                13px;
+
+            font-weight:
+                680;
+
+            transition:
+                0.16s ease;
+
+        }
+
+
+        .button-primary {
+
+            border:
+                1px solid
+                var(--teal);
+
+            background:
+                var(--teal);
+
+            color:
+                white;
+
+        }
+
+
+        .button-primary:hover:not(:disabled) {
+
+            background:
+                var(--teal-2);
+
+            border-color:
+                var(--teal-2);
+
+        }
+
+
+        .button-primary:disabled {
+
+            cursor:
+                not-allowed;
+
+            border-color:
+                #d5dad5;
+
+            background:
+                #d5dad5;
+
+            color:
+                #8e9994;
+
+        }
+
+
+        .button-secondary {
+
+            border:
+                1px solid
+                #cfd7d1;
+
+            background:
+                white;
+
+            color:
+                var(--teal-2);
+
+        }
+
+
+        .button-secondary:hover {
+
+            background:
+                #f7faf8;
+
+            border-color:
+                #aebeb4;
+
+        }
+
+
+        /* =========================================================
+           ERROR
+        ========================================================= */
+
+        .error-message {
+
+            margin-bottom:
+                22px;
+
+            padding:
+                14px 16px;
+
+            border:
+                1px solid
+                #ebd1ce;
+
+            border-radius:
+                11px;
+
+            background:
+                var(--danger-bg);
+
+            color:
+                var(--danger);
+
+            font-size:
+                12px;
+
+            line-height:
+                1.6;
+
+        }
+
+
+        /* =========================================================
+           INFORMATION
+        ========================================================= */
+
+        .info-grid {
+
+            margin-top:
+                26px;
+
+            display:
+                grid;
+
+            grid-template-columns:
+                repeat(
+                    3,
+                    1fr
+                );
+
+            gap:
+                12px;
+
+        }
+
+
+        .info-card {
+
+            padding:
+                17px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius:
+                13px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    0.50
+                );
+
+        }
+
+
+        .info-card strong {
+
+            display:
+                block;
+
+            color:
+                var(--teal);
+
+            font-size:
+                12px;
+
+            font-weight:
+                700;
+
+        }
+
+
+        .info-card p {
+
+            margin-top:
+                6px;
+
+            color:
+                var(--muted);
+
+            font-size:
+                10px;
+
+            line-height:
+                1.55;
+
+        }
+
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        .site-footer {
+
+            margin-top:
+                28px;
+
+            padding-top:
+                20px;
+
+            border-top:
+                1px solid
+                rgba(
+                    32,
+                    81,
+                    77,
+                    0.10
+                );
+
+            display:
+                flex;
+
+            justify-content:
+                space-between;
+
+            gap:
+                20px;
+
+            color:
+                var(--muted-2);
+
+            font-size:
+                10px;
+
+            line-height:
+                1.5;
+
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (
+            max-width: 800px
+        ) {
+
+            .upload-preview {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .image-frame {
+
+                height:
+                    350px;
+
+            }
+
+
+            .info-grid {
+
+                grid-template-columns:
+                    1fr;
+
+            }
+
+
+            .card-footer {
+
+                flex-direction:
+                    column;
+
+                align-items:
+                    stretch;
+
+            }
+
+
+            .button-primary {
+
+                width:
+                    100%;
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            .header-inner {
+
+                width:
+                    calc(
+                        100% - 28px
+                    );
+
+            }
+
+
+            .page {
+
+                width:
+                    calc(
+                        100% - 28px
+                    );
+
+                padding-top:
+                    38px;
+
+            }
+
+
+            .brand-subtitle {
+
+                display:
+                    none;
+
+            }
+
+
+            .prototype-badge {
+
+                display:
+                    none;
+
+            }
+
+
+            .database-link {
+
+                min-height:
+                    38px;
+
+                padding:
+                    0 11px;
+
+                font-size:
+                    11px;
+
+            }
+
+
+            .database-link svg {
+
+                width:
+                    16px;
+
+                height:
+                    16px;
+
+            }
+
+
+            .card-header,
+            .card-body,
+            .card-footer {
+
+                padding-left:
+                    19px;
+
+                padding-right:
+                    19px;
+
+            }
+
+
+            .card-header {
+
+                flex-direction:
+                    column;
+
+            }
+
+
+            .drop-zone {
+
+                min-height:
+                    290px;
+
+                padding:
+                    35px 20px;
+
+            }
+
+
+            .system-strip {
+
+                align-items:
+                    flex-start;
+
+                flex-direction:
+                    column;
+
+            }
+
+
+            .site-footer {
+
+                flex-direction:
+                    column;
+
+            }
+
+        }
+
+
+        @media (
+            max-width: 430px
+        ) {
+
+            .database-link span {
+
+                display:
+                    none;
+
+            }
+
+
+            .database-link {
+
+                width:
+                    40px;
+
+                padding:
+                    0;
+
+            }
+
+
+            .header-actions {
+
+                gap:
+                    6px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================== -->
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+
+        <!-- BRAND -->
+
+        <div class="brand">
+
+            <div class="brand-mark">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M12 3v18"
+                    ></path>
+
+
+                    <path
+                        d="
+                            M8 7
+                            c-2.8 0-5 2.4-5 5.3
+                            0 3.5 2.1 6.1 5.3 6.8
+                            1.5.3 2.7-.8 2.7-2.3
+                            V9.2
+                            C11 8 9.8 7 8 7Z
+                        "
+                    ></path>
+
+
+                    <path
+                        d="
+                            M16 7
+                            c2.8 0 5 2.4 5 5.3
+                            0 3.5-2.1 6.1-5.3 6.8
+                            -1.5.3-2.7-.8-2.7-2.3
+                            V9.2
+                            C13 8 14.2 7 16 7Z
+                        "
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <span class="brand-name">
+                    TB Guard
+                </span>
+
+                <span class="brand-subtitle">
+                    Explainable tuberculosis screening
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- HEADER ACTIONS -->
+
+        <div class="header-actions">
+
+
+            <!-- DATABASE BUTTON -->
+
+            <a
+                href="{{ url_for('screening_database') }}"
+                class="database-link"
+                title="Open screening database"
+                aria-label="Open screening database"
+            >
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    aria-hidden="true"
+                >
+
+                    <ellipse
+                        cx="12"
+                        cy="5"
+                        rx="8"
+                        ry="3"
+                    ></ellipse>
+
+                    <path
+                        d="
+                            M4 5v6
+                            c0 1.7 3.6 3 8 3
+                            s8-1.3 8-3V5
+                        "
+                    ></path>
+
+                    <path
+                        d="
+                            M4 11v6
+                            c0 1.7 3.6 3 8 3
+                            s8-1.3 8-3v-6
+                        "
+                    ></path>
+
+                </svg>
+
+
+                <span>
+                    Screening database
+                </span>
+
+            </a>
+
+
+            <span class="prototype-badge">
+
+                Research prototype
+
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================== -->
+
+<main class="page">
+
+
+    <!-- =====================================================
+         INTRODUCTION
+    ====================================================== -->
+
+    <section class="intro">
+
+        <span class="kicker">
+            Chest radiograph screening
+        </span>
+
+
+        <h1>
+            Screen a chest X-ray.
+        </h1>
+
+
+        <p>
+
+            Upload a chest radiograph for local
+            MobileNetV3 tuberculosis screening and
+            Grad-CAM explainability. Processing takes
+            place directly on the Raspberry Pi.
+
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         SYSTEM STATUS
+    ====================================================== -->
+
+    <div class="system-strip">
+
+        <div class="system-status">
+
+            <span class="status-dot"></span>
+
+            Local screening system ready
+
+        </div>
+
+
+        <small>
+
+            MobileNetV3 · Raspberry Pi · Local storage
+
+        </small>
+
+    </div>
+
+
+    <!-- =====================================================
+         FLASK ERROR
+    ====================================================== -->
+
+    {% if error %}
+
+    <div class="error-message">
+
+        <strong>
+            Screening could not continue.
+        </strong>
+
+        <br>
+
+        {{ error }}
+
+    </div>
+
+    {% endif %}
+
+
+    <!-- =====================================================
+         SCREENING FORM
+    ====================================================== -->
+
+    <form
+        id="screeningForm"
+        action="{{ url_for('screen') }}"
+        method="POST"
+        enctype="multipart/form-data"
+    >
+
+
+        <section class="screen-card">
+
+
+            <!-- CARD HEADER -->
+
+            <div class="card-header">
+
+                <div>
+
+                    <h2>
+                        Upload chest X-ray
+                    </h2>
+
+
+                    <p>
+
+                        Select a chest radiograph to begin
+                        local tuberculosis screening.
+
+                    </p>
+
+                </div>
+
+
+                <span class="step-chip">
+                    Screening
+                </span>
+
+            </div>
+
+
+            <!-- CARD BODY -->
+
+            <div class="card-body">
+
+
+                <!-- REAL FILE INPUT -->
+
+                <input
+                    type="file"
+                    id="xrayInput"
+                    name="xray"
+                    accept=".jpg,.jpeg,.png,image/jpeg,image/png"
+                    required
+                >
+
+
+                <!-- =================================================
+                     DROP ZONE
+                ================================================== -->
+
+                <div
+                    class="drop-zone"
+                    id="dropZone"
+                    tabindex="0"
+                    role="button"
+                    aria-label="Upload chest X-ray"
+                >
+
+
+                    <div class="upload-icon">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            aria-hidden="true"
+                        >
+
+                            <path
+                                d="M12 16V4"
+                            ></path>
+
+                            <path
+                                d="m7 9 5-5 5 5"
+                            ></path>
+
+                            <path
+                                d="
+                                    M5 14v4
+                                    a2 2 0 0 0 2 2
+                                    h10
+                                    a2 2 0 0 0 2-2
+                                    v-4
+                                "
+                            ></path>
+
+                        </svg>
+
+                    </div>
+
+
+                    <h3>
+                        Upload chest X-ray
+                    </h3>
+
+
+                    <p>
+
+                        Drag an image here or
+
+                        <span>
+                            browse your computer
+                        </span>
+
+                    </p>
+
+
+                    <small>
+
+                        JPG, JPEG or PNG · Maximum 15 MB
+
+                    </small>
+
+                </div>
+
+
+                <!-- =================================================
+                     PREVIEW
+                ================================================== -->
+
+                <div
+                    class="upload-preview"
+                    id="uploadPreview"
+                >
+
+
+                    <!-- IMAGE -->
+
+                    <div class="image-frame">
+
+                        <img
+                            id="previewImage"
+                            alt="Uploaded chest X-ray preview"
+                        >
+
+                    </div>
+
+
+                    <!-- INFORMATION -->
+
+                    <div>
+
+
+                        <span class="ready-pill">
+
+                            ✓ Image selected
+
+                        </span>
+
+
+                        <h3
+                            class="file-name"
+                            id="fileName"
+                        >
+                            Chest X-ray
+                        </h3>
+
+
+                        <div class="metadata">
+
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    File type
+                                </span>
+
+                                <strong
+                                    id="fileType"
+                                >
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    File size
+                                </span>
+
+                                <strong
+                                    id="fileSize"
+                                >
+                                    —
+                                </strong>
+
+                            </div>
+
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    Processing
+                                </span>
+
+                                <strong>
+                                    Local Raspberry Pi
+                                </strong>
+
+                            </div>
+
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    Screening model
+                                </span>
+
+                                <strong>
+                                    MobileNetV3
+                                </strong>
+
+                            </div>
+
+
+                            <div class="metadata-row">
+
+                                <span>
+                                    Explainability
+                                </span>
+
+                                <strong>
+                                    Grad-CAM
+                                </strong>
+
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="preview-actions">
+
+
+                            <button
+                                type="button"
+                                id="changeImage"
+                                class="
+                                    button
+                                    button-secondary
+                                "
+                            >
+                                Change image
+                            </button>
+
+
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 FOOTER
+            ================================================== -->
+
+            <div class="card-footer">
+
+
+                <p class="footer-copy">
+
+                    The result is intended as a research
+                    screening aid and does not replace
+                    clinical diagnosis or radiological
+                    interpretation.
+
+                </p>
+
+
+                <button
+                    type="submit"
+                    id="screenButton"
+                    class="
+                        button
+                        button-primary
+                    "
+                    disabled
+                >
+
+                    Screen X-ray
+
+                </button>
+
+
+            </div>
+
+
+        </section>
+
+    </form>
+
+
+    <!-- =====================================================
+         SYSTEM INFORMATION
+    ====================================================== -->
+
+    <section class="info-grid">
+
+
+        <div class="info-card">
+
+            <strong>
+                Local inference
+            </strong>
+
+            <p>
+
+                Chest X-rays are processed locally on
+                the Raspberry Pi instead of requiring
+                cloud inference.
+
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <strong>
+                Explainable screening
+            </strong>
+
+            <p>
+
+                Grad-CAM produces a visual explanation
+                showing image regions that influenced
+                the model output.
+
+            </p>
+
+        </div>
+
+
+        <div class="info-card">
+
+            <strong>
+                Screening database
+            </strong>
+
+            <p>
+
+                Screening results and protected image
+                references are stored locally and can
+                be reviewed through the database page.
+
+            </p>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         PAGE FOOTER
+    ====================================================== -->
+
+    <footer class="site-footer">
+
+        <span>
+            TB Guard · Explainable tuberculosis screening
+        </span>
+
+        <span>
+            Research prototype · Raspberry Pi deployment
+        </span>
+
+    </footer>
+
+
+</main>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================== -->
+
+<script>
+
+    /* =========================================================
+       ELEMENTS
+    ========================================================= */
+
+    const input =
+        document.getElementById(
+            "xrayInput"
+        );
+
+
+    const dropZone =
+        document.getElementById(
+            "dropZone"
+        );
+
+
+    const uploadPreview =
+        document.getElementById(
+            "uploadPreview"
+        );
+
+
+    const previewImage =
+        document.getElementById(
+            "previewImage"
+        );
+
+
+    const fileName =
+        document.getElementById(
+            "fileName"
+        );
+
+
+    const fileType =
+        document.getElementById(
+            "fileType"
+        );
+
+
+    const fileSize =
+        document.getElementById(
+            "fileSize"
+        );
+
+
+    const changeImage =
+        document.getElementById(
+            "changeImage"
+        );
+
+
+    const screenButton =
+        document.getElementById(
+            "screenButton"
+        );
+
+
+    const form =
+        document.getElementById(
+            "screeningForm"
+        );
+
+
+    /* =========================================================
+       OPEN FILE PICKER
+    ========================================================= */
+
+    dropZone.addEventListener(
+        "click",
+        function () {
+
+            input.click();
+
+        }
+    );
+
+
+    dropZone.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (
+                event.key === "Enter"
+                ||
+                event.key === " "
+            ) {
+
+                event.preventDefault();
+
+                input.click();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       NORMAL FILE SELECTION
+    ========================================================= */
+
+    input.addEventListener(
+        "change",
+        function () {
+
+            if (
+                input.files
+                &&
+                input.files.length > 0
+            ) {
+
+                showSelectedFile(
+                    input.files[0]
+                );
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       DRAG ENTER
+    ========================================================= */
+
+    dropZone.addEventListener(
+        "dragenter",
+        function (event) {
+
+            event.preventDefault();
+
+            dropZone
+                .classList
+                .add(
+                    "dragging"
+                );
+
+        }
+    );
+
+
+    /* =========================================================
+       DRAG OVER
+    ========================================================= */
+
+    dropZone.addEventListener(
+        "dragover",
+        function (event) {
+
+            event.preventDefault();
+
+            dropZone
+                .classList
+                .add(
+                    "dragging"
+                );
+
+        }
+    );
+
+
+    /* =========================================================
+       DRAG LEAVE
+    ========================================================= */
+
+    dropZone.addEventListener(
+        "dragleave",
+        function () {
+
+            dropZone
+                .classList
+                .remove(
+                    "dragging"
+                );
+
+        }
+    );
+
+
+    /* =========================================================
+       DROP FILE
+    ========================================================= */
+
+    dropZone.addEventListener(
+        "drop",
+        function (event) {
+
+            event.preventDefault();
+
+            dropZone
+                .classList
+                .remove(
+                    "dragging"
+                );
+
+
+            const files =
+                event.dataTransfer.files;
+
+
+            if (
+                !files
+                ||
+                files.length === 0
+            ) {
+
+                return;
+
+            }
+
+
+            const file =
+                files[0];
+
+
+            const dataTransfer =
+                new DataTransfer();
+
+
+            dataTransfer
+                .items
+                .add(
+                    file
+                );
+
+
+            input.files =
+                dataTransfer.files;
+
+
+            showSelectedFile(
+                file
+            );
+
+        }
+    );
+
+
+    /* =========================================================
+       SHOW SELECTED FILE
+    ========================================================= */
+
+    function showSelectedFile(
+        file
+    ) {
+
+        const allowedTypes = [
+
+            "image/jpeg",
+
+            "image/png"
+
+        ];
+
+
+        /* ---------------------------------------------------------
+           TYPE VALIDATION
+        --------------------------------------------------------- */
+
+        if (
+            !allowedTypes.includes(
+                file.type
+            )
+        ) {
+
+            alert(
+                "Please select a JPG, JPEG or PNG image."
+            );
+
+
+            clearSelection();
+
+            return;
+
+        }
+
+
+        /* ---------------------------------------------------------
+           SIZE VALIDATION
+        --------------------------------------------------------- */
+
+        const maxSize =
+            15 * 1024 * 1024;
+
+
+        if (
+            file.size >
+            maxSize
+        ) {
+
+            alert(
+                "The selected image is larger than 15 MB."
+            );
+
+
+            clearSelection();
+
+            return;
+
+        }
+
+
+        /* ---------------------------------------------------------
+           INFORMATION
+        --------------------------------------------------------- */
+
+        fileName.textContent =
+            file.name;
+
+
+        fileType.textContent =
+            file.type ===
+            "image/png"
+
+                ? "PNG"
+
+                : "JPEG";
+
+
+        fileSize.textContent =
+            formatBytes(
+                file.size
+            );
+
+
+        /* ---------------------------------------------------------
+           PREVIEW
+        --------------------------------------------------------- */
+
+        const reader =
+            new FileReader();
+
+
+        reader.onload =
+            function (
+                event
+            ) {
+
+                previewImage.src =
+                    event.target.result;
+
+            };
+
+
+        reader.readAsDataURL(
+            file
+        );
+
+
+        /* ---------------------------------------------------------
+           CHANGE UI
+        --------------------------------------------------------- */
+
+        dropZone.style.display =
+            "none";
+
+
+        uploadPreview
+            .classList
+            .add(
+                "visible"
+            );
+
+
+        screenButton.disabled =
+            false;
+
+    }
+
+
+    /* =========================================================
+       CHANGE IMAGE
+    ========================================================= */
+
+    changeImage.addEventListener(
+        "click",
+        function () {
+
+            clearSelection();
+
+            input.click();
+
+        }
+    );
+
+
+    /* =========================================================
+       CLEAR SELECTION
+    ========================================================= */
+
+    function clearSelection() {
+
+        input.value =
+            "";
+
+
+        previewImage.src =
+            "";
+
+
+        uploadPreview
+            .classList
+            .remove(
+                "visible"
+            );
+
+
+        dropZone.style.display =
+            "";
+
+
+        screenButton.disabled =
+            true;
+
+
+        screenButton.textContent =
+            "Screen X-ray";
+
+    }
+
+
+    /* =========================================================
+       FORMAT FILE SIZE
+    ========================================================= */
+
+    function formatBytes(
+        bytes
+    ) {
+
+        if (
+            bytes === 0
+        ) {
+
+            return "0 Bytes";
+
+        }
+
+
+        const units = [
+
+            "Bytes",
+
+            "KB",
+
+            "MB",
+
+            "GB"
+
+        ];
+
+
+        const index =
+            Math.floor(
+                Math.log(
+                    bytes
+                )
+                /
+                Math.log(
+                    1024
+                )
+            );
+
+
+        const value =
+            bytes
+            /
+            Math.pow(
+                1024,
+                index
+            );
+
+
+        return (
+            value.toFixed(
+                index === 0
+                    ? 0
+                    : 2
+            )
+            +
+            " "
+            +
+            units[
+                index
+            ]
+        );
+
+    }
+
+
+    /* =========================================================
+       FORM SUBMISSION
+    ========================================================= */
+
+    form.addEventListener(
+        "submit",
+        function (
+            event
+        ) {
+
+            if (
+                !input.files
+                ||
+                input.files.length === 0
+            ) {
+
+                event.preventDefault();
+
+                return;
+
+            }
+
+
+            screenButton.disabled =
+                true;
+
+
+            screenButton.textContent =
+                "Screening...";
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>

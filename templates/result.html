@@ -1,0 +1,2268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TB Guard | Screening Result
+    </title>
+
+
+    <style>
+
+        :root {
+            --page: #f7f5f0;
+            --white: #ffffff;
+            --soft: #fbfaf7;
+
+            --teal: #183c3a;
+            --teal-2: #20514d;
+            --teal-3: #2b6862;
+
+            --sage: #dfe9e3;
+            --sage-soft: #f0f5f2;
+
+            --text: #20302e;
+
+            --muted: #687672;
+            --muted-2: #8a9591;
+
+            --border: #dde1dc;
+
+            --success: #39705c;
+            --success-bg: #eef7f2;
+
+            --warning: #836523;
+            --warning-bg: #fbf5e5;
+
+            --danger: #a34d48;
+            --danger-bg: #fff3f1;
+
+            --shadow:
+                0 1px 2px rgba(24, 60, 58, 0.03),
+                0 12px 34px rgba(24, 60, 58, 0.055);
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: var(--page);
+            color: var(--text);
+
+            -webkit-font-smoothing:
+                antialiased;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        button {
+            font: inherit;
+            cursor: pointer;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .site-header {
+            border-bottom:
+                1px solid
+                rgba(32, 81, 77, 0.10);
+
+            background:
+                rgba(247, 245, 240, 0.97);
+        }
+
+
+        .header-inner {
+            width:
+                min(
+                    1160px,
+                    calc(100% - 48px)
+                );
+
+            min-height: 80px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+
+            gap: 13px;
+        }
+
+
+        .brand-mark {
+            width: 43px;
+            height: 43px;
+
+            border-radius: 13px;
+
+            display: grid;
+            place-items: center;
+
+            background: var(--teal);
+            color: white;
+        }
+
+
+        .brand-mark svg {
+            width: 23px;
+            height: 23px;
+        }
+
+
+        .brand-name {
+            display: block;
+
+            color: var(--teal);
+
+            font-size: 18px;
+            font-weight: 720;
+        }
+
+
+        .brand-subtitle {
+            display: block;
+
+            margin-top: 2px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+        }
+
+
+        .header-actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 8px;
+        }
+
+
+        .header-link {
+            min-height: 39px;
+
+            padding: 0 13px;
+
+            border:
+                1px solid
+                #cfd7d1;
+
+            border-radius: 9px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            background: white;
+
+            color: var(--teal-2);
+
+            font-size: 11px;
+            font-weight: 680;
+
+            transition: .16s ease;
+        }
+
+
+        .header-link:hover {
+            background: var(--sage-soft);
+        }
+
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .page {
+            width:
+                min(
+                    1080px,
+                    calc(100% - 48px)
+                );
+
+            margin: 0 auto;
+
+            padding: 48px 0;
+        }
+
+
+        /* =========================================================
+           PAGE INTRO
+        ========================================================= */
+
+        .intro {
+            margin-bottom: 26px;
+        }
+
+
+        .kicker {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: var(--teal-3);
+
+            font-size: 11px;
+            font-weight: 750;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+
+        .intro h1 {
+            color: var(--teal);
+
+            font-size:
+                clamp(
+                    30px,
+                    4vw,
+                    43px
+                );
+
+            line-height: 1.1;
+
+            letter-spacing: -1.2px;
+
+            font-weight: 680;
+        }
+
+
+        .intro p {
+            max-width: 720px;
+
+            margin-top: 12px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+
+        /* =========================================================
+           STATUS BANNER
+        ========================================================= */
+
+        .result-banner {
+            margin-bottom: 22px;
+
+            padding: 22px 24px;
+
+            border-radius: 15px;
+
+            display: flex;
+
+            justify-content: space-between;
+            align-items: center;
+
+            gap: 20px;
+        }
+
+
+        .result-banner.completed {
+            border:
+                1px solid
+                #cfe2d8;
+
+            background:
+                var(--success-bg);
+        }
+
+
+        .result-banner.failed {
+            border:
+                1px solid
+                #ebd1ce;
+
+            background:
+                var(--danger-bg);
+        }
+
+
+        .result-banner.processing {
+            border:
+                1px solid
+                #eadfb9;
+
+            background:
+                var(--warning-bg);
+        }
+
+
+        .result-banner.unknown {
+            border:
+                1px solid
+                var(--border);
+
+            background:
+                var(--white);
+        }
+
+
+        .banner-copy small {
+            display: block;
+
+            margin-bottom: 5px;
+
+            color: var(--muted);
+
+            font-size: 9px;
+            font-weight: 800;
+
+            letter-spacing: .06em;
+
+            text-transform: uppercase;
+        }
+
+
+        .banner-copy h2 {
+            color: var(--teal);
+
+            font-size: 21px;
+
+            font-weight: 700;
+        }
+
+
+        .result-banner.failed h2 {
+            color: var(--danger);
+        }
+
+
+        .banner-copy p {
+            max-width: 650px;
+
+            margin-top: 7px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            line-height: 1.55;
+        }
+
+
+        .status-pill {
+            padding: 7px 11px;
+
+            border-radius: 999px;
+
+            background:
+                rgba(
+                    255,
+                    255,
+                    255,
+                    .65
+                );
+
+            font-size: 10px;
+            font-weight: 750;
+
+            white-space: nowrap;
+
+            text-transform: capitalize;
+        }
+
+
+        /* =========================================================
+           ERROR DETAIL
+        ========================================================= */
+
+        .error-box {
+            margin-bottom: 22px;
+
+            padding: 18px;
+
+            border:
+                1px solid
+                #ebd1ce;
+
+            border-radius: 13px;
+
+            background: var(--danger-bg);
+
+            color: var(--danger);
+        }
+
+
+        .error-box strong {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 12px;
+        }
+
+
+        .error-box p {
+            font-size: 11px;
+
+            line-height: 1.6;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        /* =========================================================
+           MAIN RESULT
+        ========================================================= */
+
+        .result-card {
+            overflow: hidden;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 18px;
+
+            background: var(--white);
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .result-card-header {
+            padding: 21px 24px;
+
+            border-bottom:
+                1px solid
+                #eceeea;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .result-card-header h2 {
+            color: var(--teal);
+
+            font-size: 17px;
+            font-weight: 680;
+        }
+
+
+        .screening-id {
+            padding: 6px 9px;
+
+            border-radius: 7px;
+
+            background: var(--sage-soft);
+
+            color: var(--teal-3);
+
+            font-size: 9px;
+            font-weight: 720;
+        }
+
+
+        .result-body {
+            padding: 25px;
+        }
+
+
+        /* =========================================================
+           RESULT OVERVIEW
+        ========================================================= */
+
+        .overview {
+            display: grid;
+
+            grid-template-columns:
+                minmax(
+                    220px,
+                    .8fr
+                )
+                minmax(
+                    0,
+                    1.5fr
+                );
+
+            gap: 28px;
+
+            margin-bottom: 30px;
+        }
+
+
+        .prediction-panel {
+            padding: 25px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 15px;
+
+            background: var(--soft);
+        }
+
+
+        .prediction-label {
+            color: var(--muted);
+
+            font-size: 10px;
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: .05em;
+        }
+
+
+        .prediction-value {
+            display: block;
+
+            margin-top: 10px;
+
+            color: var(--teal);
+
+            font-size:
+                clamp(
+                    25px,
+                    4vw,
+                    34px
+                );
+
+            line-height: 1.15;
+
+            font-weight: 720;
+        }
+
+
+        .prediction-value.tb {
+            color: var(--danger);
+        }
+
+
+        .prediction-value.normal {
+            color: var(--success);
+        }
+
+
+        .confidence-block {
+            margin-top: 25px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid
+                #e2e5e2;
+        }
+
+
+        .confidence-block span {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            font-weight: 650;
+        }
+
+
+        .confidence-block strong {
+            display: block;
+
+            margin-top: 6px;
+
+            color: var(--teal);
+
+            font-size: 25px;
+
+            font-weight: 700;
+        }
+
+
+        /* =========================================================
+           METRICS
+        ========================================================= */
+
+        .metrics {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 12px;
+        }
+
+
+        .metric {
+            min-height: 105px;
+
+            padding: 17px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 13px;
+
+            background: white;
+        }
+
+
+        .metric-label {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            font-weight: 650;
+        }
+
+
+        .metric-value {
+            display: block;
+
+            margin-top: 8px;
+
+            color: var(--teal);
+
+            font-size: 22px;
+
+            font-weight: 700;
+        }
+
+
+        .metric small {
+            display: block;
+
+            margin-top: 4px;
+
+            color: var(--muted-2);
+
+            font-size: 9px;
+
+            line-height: 1.45;
+        }
+
+
+        /* =========================================================
+           IMAGES
+        ========================================================= */
+
+        .image-section {
+            margin-top: 30px;
+        }
+
+
+        .section-heading {
+            margin-bottom: 14px;
+        }
+
+
+        .section-heading h3 {
+            color: var(--teal);
+
+            font-size: 16px;
+
+            font-weight: 680;
+        }
+
+
+        .section-heading p {
+            margin-top: 5px;
+
+            color: var(--muted);
+
+            font-size: 10px;
+
+            line-height: 1.55;
+        }
+
+
+        .images-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    2,
+                    minmax(0, 1fr)
+                );
+
+            gap: 15px;
+        }
+
+
+        .image-card {
+            overflow: hidden;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 14px;
+
+            background: #fcfcfa;
+        }
+
+
+        .image-header {
+            min-height: 50px;
+
+            padding: 12px 14px;
+
+            border-bottom:
+                1px solid
+                #e8ebe8;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 10px;
+        }
+
+
+        .image-header strong {
+            color: var(--teal);
+
+            font-size: 11px;
+        }
+
+
+        .image-header span {
+            color: var(--muted-2);
+
+            font-size: 8px;
+
+            text-transform: uppercase;
+
+            letter-spacing: .05em;
+        }
+
+
+        .image-body {
+            height: 430px;
+
+            padding: 10px;
+
+            background: #202525;
+
+            display: grid;
+
+            place-items: center;
+        }
+
+
+        .image-body img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: contain;
+        }
+
+
+        .image-unavailable {
+            min-height: 430px;
+
+            padding: 25px;
+
+            display: grid;
+
+            place-items: center;
+
+            text-align: center;
+
+            background: #f7f8f6;
+
+            color: var(--muted);
+        }
+
+
+        .image-unavailable strong {
+            display: block;
+
+            color: var(--teal);
+
+            font-size: 13px;
+        }
+
+
+        .image-unavailable p {
+            margin-top: 7px;
+
+            font-size: 10px;
+
+            line-height: 1.5;
+        }
+
+
+        /* =========================================================
+           RECORD DETAILS
+        ========================================================= */
+
+        .record-section {
+            margin-top: 30px;
+        }
+
+
+        .record-details {
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 13px;
+
+            overflow: hidden;
+        }
+
+
+        .detail-row {
+            min-height: 48px;
+
+            padding: 10px 14px;
+
+            border-bottom:
+                1px solid
+                #eceeea;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 20px;
+
+            font-size: 11px;
+        }
+
+
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+
+
+        .detail-row span {
+            color: var(--muted);
+        }
+
+
+        .detail-row strong {
+            max-width: 65%;
+
+            color: var(--text);
+
+            font-weight: 650;
+
+            text-align: right;
+
+            overflow-wrap: anywhere;
+        }
+
+
+        /* =========================================================
+           ACTIONS
+        ========================================================= */
+
+        .actions-section {
+            margin-top: 25px;
+
+            padding-top: 22px;
+
+            border-top:
+                1px solid
+                #eceeea;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .actions-left,
+        .actions-right {
+            display: flex;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .button {
+            min-height: 40px;
+
+            padding: 0 13px;
+
+            border-radius: 9px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            border:
+                1px solid
+                #cfd7d1;
+
+            background: white;
+
+            color: var(--teal-2);
+
+            font-size: 10px;
+
+            font-weight: 680;
+
+            transition: .16s ease;
+        }
+
+
+        .button:hover {
+            background: var(--sage-soft);
+        }
+
+
+        .button-primary {
+            border-color: var(--teal);
+
+            background: var(--teal);
+
+            color: white;
+        }
+
+
+        .button-primary:hover {
+            background: var(--teal-2);
+        }
+
+
+        /* =========================================================
+           DISCLAIMER
+        ========================================================= */
+
+        .disclaimer {
+            margin-top: 22px;
+
+            padding: 15px 17px;
+
+            border:
+                1px solid
+                #e9e1d2;
+
+            border-radius: 12px;
+
+            background: #f7f4ed;
+
+            color: #70675a;
+
+            font-size: 10px;
+
+            line-height: 1.6;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (
+            max-width: 800px
+        ) {
+
+            .overview {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .images-grid {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .image-body,
+            .image-unavailable {
+                min-height: 350px;
+                height: 350px;
+            }
+
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            .header-inner,
+            .page {
+                width:
+                    calc(
+                        100% - 28px
+                    );
+            }
+
+
+            .header-inner {
+                min-height: 72px;
+            }
+
+
+            .brand-subtitle {
+                display: none;
+            }
+
+
+            .header-link.database {
+                display: none;
+            }
+
+
+            .page {
+                padding-top: 35px;
+            }
+
+
+            .result-banner {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .result-card-header {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .result-body {
+                padding: 18px;
+            }
+
+
+            .metrics {
+                grid-template-columns:
+                    1fr;
+            }
+
+
+            .detail-row {
+                align-items: flex-start;
+
+                flex-direction: column;
+
+                gap: 5px;
+            }
+
+
+            .detail-row strong {
+                max-width: 100%;
+
+                text-align: left;
+            }
+
+
+            .actions-section {
+                align-items: stretch;
+
+                flex-direction: column;
+            }
+
+
+            .actions-left,
+            .actions-right {
+                width: 100%;
+            }
+
+
+            .button {
+                flex: 1;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+{% set current_status = (result.status or "unknown")|lower %}
+
+{% set prediction_text = result.prediction or "No result" %}
+
+{% set prediction_lower = prediction_text|lower %}
+
+
+<!-- =========================================================
+     SAFE PERCENTAGE VALUES
+========================================================== -->
+
+{% if result.confidence is not none %}
+
+    {% set raw_confidence = result.confidence|float %}
+
+    {% if raw_confidence <= 1 %}
+        {% set confidence_percent = raw_confidence * 100 %}
+    {% else %}
+        {% set confidence_percent = raw_confidence %}
+    {% endif %}
+
+{% else %}
+
+    {% set confidence_percent = none %}
+
+{% endif %}
+
+
+{% if result.tb_probability is not none %}
+
+    {% set raw_tb = result.tb_probability|float %}
+
+    {% if raw_tb <= 1 %}
+        {% set tb_percent = raw_tb * 100 %}
+    {% else %}
+        {% set tb_percent = raw_tb %}
+    {% endif %}
+
+{% else %}
+
+    {% set tb_percent = none %}
+
+{% endif %}
+
+
+{% if result.normal_probability is not none %}
+
+    {% set raw_normal = result.normal_probability|float %}
+
+    {% if raw_normal <= 1 %}
+        {% set normal_percent = raw_normal * 100 %}
+    {% else %}
+        {% set normal_percent = raw_normal %}
+    {% endif %}
+
+{% else %}
+
+    {% set normal_percent = none %}
+
+{% endif %}
+
+
+
+<!-- =========================================================
+     HEADER
+========================================================== -->
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+
+        <a
+            href="{{ url_for('index') }}"
+            class="brand"
+        >
+
+            <div class="brand-mark">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        d="M12 3v18"
+                    ></path>
+
+                    <path
+                        d="
+                            M8 7
+                            c-2.8 0-5 2.4-5 5.3
+                            0 3.5 2.1 6.1 5.3 6.8
+                            1.5.3 2.7-.8 2.7-2.3
+                            V9.2
+                            C11 8 9.8 7 8 7Z
+                        "
+                    ></path>
+
+                    <path
+                        d="
+                            M16 7
+                            c2.8 0 5 2.4 5 5.3
+                            0 3.5-2.1 6.1-5.3 6.8
+                            -1.5.3-2.7-.8-2.7-2.3
+                            V9.2
+                            C13 8 14.2 7 16 7Z
+                        "
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <span class="brand-name">
+                    TB Guard
+                </span>
+
+                <span class="brand-subtitle">
+                    Explainable tuberculosis screening
+                </span>
+
+            </div>
+
+        </a>
+
+
+        <div class="header-actions">
+
+
+            <a
+                href="{{ url_for('screening_database') }}"
+                class="header-link database"
+            >
+                Screening database
+            </a>
+
+
+            <a
+                href="{{ url_for('index') }}"
+                class="header-link"
+            >
+                New screening
+            </a>
+
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================== -->
+
+<main class="page">
+
+
+    <!-- =====================================================
+         INTRO
+    ====================================================== -->
+
+    <section class="intro">
+
+        <span class="kicker">
+            Screening result
+        </span>
+
+
+        <h1>
+            Chest X-ray screening result
+        </h1>
+
+
+        <p>
+
+            Review the model prediction, confidence,
+            class probabilities and Grad-CAM image
+            explanation for this screening.
+
+        </p>
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RESULT STATUS
+    ====================================================== -->
+
+    <section
+        class="
+            result-banner
+            {{ current_status }}
+        "
+    >
+
+
+        <div class="banner-copy">
+
+
+            {% if current_status == "failed" %}
+
+                <small>
+                    Screening unsuccessful
+                </small>
+
+                <h2>
+                    The screening could not be completed.
+                </h2>
+
+                <p>
+                    The record has been retained so the
+                    original X-ray and failure information
+                    can still be reviewed.
+                </p>
+
+
+            {% elif current_status == "processing" %}
+
+                <small>
+                    Processing
+                </small>
+
+                <h2>
+                    Screening is still being processed.
+                </h2>
+
+                <p>
+                    A final result is not available yet.
+                </p>
+
+
+            {% elif current_status == "completed" %}
+
+                <small>
+                    Screening completed
+                </small>
+
+                <h2>
+
+                    {% if "tuberculosis" in prediction_lower
+                          or prediction_lower == "tb"
+                          or prediction_lower == "positive" %}
+
+                        Tuberculosis features detected
+
+                    {% elif "normal" in prediction_lower
+                            or "negative" in prediction_lower %}
+
+                        No tuberculosis features detected
+
+                    {% else %}
+
+                        Screening result available
+
+                    {% endif %}
+
+                </h2>
+
+                <p>
+                    Review the screening probabilities
+                    and Grad-CAM explanation below.
+                </p>
+
+
+            {% else %}
+
+                <small>
+                    Screening record
+                </small>
+
+                <h2>
+                    Screening status unavailable.
+                </h2>
+
+            {% endif %}
+
+
+        </div>
+
+
+        <span class="status-pill">
+            {{ result.status or "Unknown" }}
+        </span>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         ERROR MESSAGE
+    ====================================================== -->
+
+    {% if result.error_message %}
+
+    <section class="error-box">
+
+        <strong>
+            Screening error
+        </strong>
+
+        <p>
+            {{ result.error_message }}
+        </p>
+
+    </section>
+
+    {% endif %}
+
+
+
+    <!-- =====================================================
+         RESULT CARD
+    ====================================================== -->
+
+    <section class="result-card">
+
+
+        <div class="result-card-header">
+
+
+            <h2>
+                Screening analysis
+            </h2>
+
+
+            <span class="screening-id">
+
+                {{
+                    result.screening_id
+                    or
+                    screening_id
+                    or
+                    "Unknown screening"
+                }}
+
+            </span>
+
+
+        </div>
+
+
+        <div class="result-body">
+
+
+            <!-- =================================================
+                 RESULT OVERVIEW
+            ================================================== -->
+
+            <section class="overview">
+
+
+                <!-- PREDICTION -->
+
+                <div class="prediction-panel">
+
+
+                    <span class="prediction-label">
+                        Model prediction
+                    </span>
+
+
+                    <strong
+                        class="
+                            prediction-value
+
+                            {% if "tuberculosis" in prediction_lower
+                                  or prediction_lower == "tb"
+                                  or prediction_lower == "positive" %}
+                                tb
+
+                            {% elif "normal" in prediction_lower
+                                    or "negative" in prediction_lower %}
+                                normal
+
+                            {% endif %}
+                        "
+                    >
+
+                        {{ prediction_text }}
+
+                    </strong>
+
+
+                    <div class="confidence-block">
+
+
+                        <span>
+                            Prediction confidence
+                        </span>
+
+
+                        <strong>
+
+                            {% if confidence_percent is not none %}
+
+                                {{
+                                    "%.2f"|format(
+                                        confidence_percent
+                                    )
+                                }}%
+
+                            {% else %}
+
+                                Not available
+
+                            {% endif %}
+
+                        </strong>
+
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- METRICS -->
+
+                <div class="metrics">
+
+
+                    <div class="metric">
+
+                        <span class="metric-label">
+                            TB probability
+                        </span>
+
+
+                        <strong class="metric-value">
+
+                            {% if tb_percent is not none %}
+
+                                {{
+                                    "%.2f"|format(
+                                        tb_percent
+                                    )
+                                }}%
+
+                            {% else %}
+
+                                —
+
+                            {% endif %}
+
+                        </strong>
+
+
+                        <small>
+                            Estimated probability assigned
+                            to the tuberculosis class.
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="metric">
+
+                        <span class="metric-label">
+                            Normal probability
+                        </span>
+
+
+                        <strong class="metric-value">
+
+                            {% if normal_percent is not none %}
+
+                                {{
+                                    "%.2f"|format(
+                                        normal_percent
+                                    )
+                                }}%
+
+                            {% else %}
+
+                                —
+
+                            {% endif %}
+
+                        </strong>
+
+
+                        <small>
+                            Estimated probability assigned
+                            to the normal class.
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="metric">
+
+                        <span class="metric-label">
+                            Model
+                        </span>
+
+
+                        <strong class="metric-value">
+
+                            {{
+                                result.model_name
+                                or
+                                "MobileNetV3"
+                            }}
+
+                        </strong>
+
+
+                        <small>
+
+                            {% if result.model_version %}
+
+                                Version
+                                {{ result.model_version }}
+
+                            {% else %}
+
+                                Raspberry Pi deployment model
+
+                            {% endif %}
+
+                        </small>
+
+                    </div>
+
+
+
+                    <div class="metric">
+
+                        <span class="metric-label">
+                            Screening status
+                        </span>
+
+
+                        <strong
+                            class="metric-value"
+                            style="
+                                font-size: 18px;
+                                text-transform: capitalize;
+                            "
+                        >
+
+                            {{
+                                result.status
+                                or
+                                "Unknown"
+                            }}
+
+                        </strong>
+
+
+                        <small>
+                            Processing state stored in the
+                            local screening database.
+                        </small>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 IMAGES
+            ================================================== -->
+
+            <section class="image-section">
+
+
+                <div class="section-heading">
+
+                    <h3>
+                        Screening images
+                    </h3>
+
+                    <p>
+                        Compare the original chest X-ray
+                        with the Grad-CAM explanation produced
+                        during screening.
+                    </p>
+
+                </div>
+
+
+                <div class="images-grid">
+
+
+                    <!-- ORIGINAL IMAGE -->
+
+                    <article class="image-card">
+
+
+                        <div class="image-header">
+
+                            <strong>
+                                Original chest X-ray
+                            </strong>
+
+                            <span>
+                                Input image
+                            </span>
+
+                        </div>
+
+
+                        {% if original_url %}
+
+                        <div class="image-body">
+
+                            <img
+                                src="{{ original_url }}"
+                                alt="Original chest X-ray used for screening"
+                            >
+
+                        </div>
+
+
+                        {% else %}
+
+                        <div class="image-unavailable">
+
+                            <div>
+
+                                <strong>
+                                    Original image unavailable
+                                </strong>
+
+                                <p>
+                                    The stored original image
+                                    could not be located.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        {% endif %}
+
+
+                    </article>
+
+
+
+                    <!-- GRAD-CAM -->
+
+                    <article class="image-card">
+
+
+                        <div class="image-header">
+
+                            <strong>
+                                Image explanation
+                            </strong>
+
+                            <span>
+                                Grad-CAM
+                            </span>
+
+                        </div>
+
+
+                        {% if gradcam_url %}
+
+                        <div class="image-body">
+
+                            <img
+                                src="{{ gradcam_url }}"
+                                alt="Grad-CAM explanation for chest X-ray screening"
+                            >
+
+                        </div>
+
+
+                        {% else %}
+
+                        <div class="image-unavailable">
+
+                            <div>
+
+                                <strong>
+                                    Grad-CAM unavailable
+                                </strong>
+
+                                <p>
+
+                                    {% if current_status == "failed" %}
+
+                                        The screening did not
+                                        complete successfully,
+                                        so a Grad-CAM explanation
+                                        may not have been created.
+
+                                    {% else %}
+
+                                        No Grad-CAM image is
+                                        currently stored for
+                                        this screening.
+
+                                    {% endif %}
+
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                        {% endif %}
+
+
+                    </article>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 RECORD DETAILS
+            ================================================== -->
+
+            <section class="record-section">
+
+
+                <div class="section-heading">
+
+                    <h3>
+                        Screening record
+                    </h3>
+
+                    <p>
+                        Stored metadata associated with
+                        this screening.
+                    </p>
+
+                </div>
+
+
+                <div class="record-details">
+
+
+                    <div class="detail-row">
+
+                        <span>
+                            Screening ID
+                        </span>
+
+                        <strong>
+                            {{
+                                result.screening_id
+                                or
+                                screening_id
+                                or
+                                "—"
+                            }}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-row">
+
+                        <span>
+                            Original filename
+                        </span>
+
+                        <strong>
+                            {{
+                                screening.original_filename
+                                or
+                                "—"
+                            }}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-row">
+
+                        <span>
+                            Prediction
+                        </span>
+
+                        <strong>
+                            {{ prediction_text }}
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-row">
+
+                        <span>
+                            Model
+                        </span>
+
+                        <strong>
+
+                            {{
+                                result.model_name
+                                or
+                                "MobileNetV3"
+                            }}
+
+                            {% if result.model_version %}
+
+                                v{{ result.model_version }}
+
+                            {% endif %}
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-row">
+
+                        <span>
+                            Created
+                        </span>
+
+                        <strong
+                            id="screeningDate"
+                            data-time="{{ result.created_at or '' }}"
+                        >
+
+                            {{
+                                result.created_at
+                                or
+                                "—"
+                            }}
+
+                        </strong>
+
+                    </div>
+
+
+
+                    <div class="detail-row">
+
+                        <span>
+                            Status
+                        </span>
+
+                        <strong
+                            style="
+                                text-transform:
+                                    capitalize;
+                            "
+                        >
+                            {{
+                                result.status
+                                or
+                                "Unknown"
+                            }}
+                        </strong>
+
+                    </div>
+
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- =================================================
+                 ACTIONS
+            ================================================== -->
+
+            <section class="actions-section">
+
+
+                <div class="actions-left">
+
+
+                    <a
+                        href="{{ url_for('index') }}"
+                        class="
+                            button
+                            button-primary
+                        "
+                    >
+                        New screening
+                    </a>
+
+
+                    <a
+                        href="{{ url_for('screening_database') }}"
+                        class="button"
+                    >
+                        Screening database
+                    </a>
+
+
+                </div>
+
+
+
+                <div class="actions-right">
+
+
+                    {% if original_url %}
+
+                    <a
+                        href="{{
+                            url_for(
+                                'download_original',
+                                screening_id=(
+                                    result.screening_id
+                                    or
+                                    screening_id
+                                )
+                            )
+                        }}"
+                        class="button"
+                    >
+                        Download original
+                    </a>
+
+                    {% endif %}
+
+
+
+                    {% if gradcam_url %}
+
+                    <a
+                        href="{{
+                            url_for(
+                                'download_gradcam',
+                                screening_id=(
+                                    result.screening_id
+                                    or
+                                    screening_id
+                                )
+                            )
+                        }}"
+                        class="button"
+                    >
+                        Download Grad-CAM
+                    </a>
+
+                    {% endif %}
+
+
+
+                    <a
+                        href="{{
+                            url_for(
+                                'download_record',
+                                screening_id=(
+                                    result.screening_id
+                                    or
+                                    screening_id
+                                )
+                            )
+                        }}"
+                        class="button"
+                    >
+                        Download record
+                    </a>
+
+
+                </div>
+
+
+            </section>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         DISCLAIMER
+    ====================================================== -->
+
+    <section class="disclaimer">
+
+        <strong>
+            Research screening prototype:
+        </strong>
+
+        This system provides an AI-assisted screening
+        result and visual explanation. It is not a
+        replacement for a clinical diagnosis,
+        radiological interpretation, laboratory testing,
+        or professional medical judgement.
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     LOCAL DATE DISPLAY
+========================================================== -->
+
+<script>
+
+    const screeningDate =
+        document.getElementById(
+            "screeningDate"
+        );
+
+
+    if (
+        screeningDate
+        &&
+        screeningDate.dataset.time
+    ) {
+
+        const stored =
+            screeningDate
+                .dataset
+                .time;
+
+
+        const parsed =
+            new Date(
+                stored
+                    .replace(
+                        " ",
+                        "T"
+                    )
+                +
+                (
+                    stored.includes(
+                        "T"
+                    )
+                    &&
+                    (
+                        stored.endsWith(
+                            "Z"
+                        )
+                        ||
+                        stored.includes(
+                            "+"
+                        )
+                    )
+                        ? ""
+                        : "Z"
+                )
+            );
+
+
+        if (
+            !Number.isNaN(
+                parsed.getTime()
+            )
+        ) {
+
+            screeningDate.textContent =
+                parsed.toLocaleString(
+                    [],
+                    {
+                        year:
+                            "numeric",
+
+                        month:
+                            "long",
+
+                        day:
+                            "2-digit",
+
+                        hour:
+                            "2-digit",
+
+                        minute:
+                            "2-digit"
+                    }
+                );
+
+        }
+
+    }
+
+</script>
+
+
+</body>
+
+</html>

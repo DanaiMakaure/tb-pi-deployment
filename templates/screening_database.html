@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        TB Guard | Screening Database
+    </title>
+
+
+    <style>
+
+        :root {
+            --page: #f7f5f0;
+            --white: #ffffff;
+            --soft: #fbfaf7;
+
+            --teal: #183c3a;
+            --teal-2: #20514d;
+            --teal-3: #2b6862;
+
+            --sage: #dfe9e3;
+            --sage-soft: #f0f5f2;
+
+            --text: #20302e;
+            --muted: #687672;
+            --muted-2: #8a9591;
+
+            --border: #dde1dc;
+
+            --success: #39705c;
+            --success-bg: #eef7f2;
+
+            --warning: #836523;
+            --warning-bg: #fbf5e5;
+
+            --danger: #a34d48;
+            --danger-bg: #fff3f1;
+
+            --shadow:
+                0 1px 2px rgba(24, 60, 58, 0.03),
+                0 12px 34px rgba(24, 60, 58, 0.055);
+        }
+
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        body {
+            min-height: 100vh;
+
+            font-family:
+                Inter,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Arial,
+                sans-serif;
+
+            background: var(--page);
+            color: var(--text);
+        }
+
+
+        button,
+        input {
+            font: inherit;
+        }
+
+
+        button {
+            cursor: pointer;
+        }
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+
+        /* =========================================================
+           HEADER
+        ========================================================= */
+
+        .site-header {
+            border-bottom:
+                1px solid
+                rgba(32, 81, 77, 0.10);
+
+            background:
+                rgba(247, 245, 240, 0.97);
+        }
+
+
+        .header-inner {
+            width:
+                min(
+                    1160px,
+                    calc(100% - 48px)
+                );
+
+            min-height: 80px;
+
+            margin: 0 auto;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            gap: 20px;
+        }
+
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+        }
+
+
+        .brand-mark {
+            width: 43px;
+            height: 43px;
+
+            border-radius: 13px;
+
+            display: grid;
+            place-items: center;
+
+            background: var(--teal);
+            color: white;
+        }
+
+
+        .brand-mark svg {
+            width: 23px;
+            height: 23px;
+        }
+
+
+        .brand-name {
+            display: block;
+
+            color: var(--teal);
+
+            font-size: 18px;
+            font-weight: 720;
+        }
+
+
+        .brand-subtitle {
+            display: block;
+
+            margin-top: 2px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+        }
+
+
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+
+        .header-link {
+            min-height: 40px;
+
+            padding: 0 14px;
+
+            border:
+                1px solid
+                #cfd7d1;
+
+            border-radius: 10px;
+
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+
+            background: white;
+            color: var(--teal-2);
+
+            font-size: 12px;
+            font-weight: 680;
+        }
+
+
+        .header-link:hover {
+            background: var(--sage-soft);
+        }
+
+
+        /* =========================================================
+           PAGE
+        ========================================================= */
+
+        .page {
+            width:
+                min(
+                    1160px,
+                    calc(100% - 48px)
+                );
+
+            margin: 0 auto;
+
+            padding: 48px 0;
+        }
+
+
+        .intro {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+
+            gap: 30px;
+
+            margin-bottom: 28px;
+        }
+
+
+        .kicker {
+            display: block;
+
+            margin-bottom: 10px;
+
+            color: var(--teal-3);
+
+            font-size: 11px;
+            font-weight: 750;
+
+            letter-spacing: .08em;
+
+            text-transform: uppercase;
+        }
+
+
+        .intro h1 {
+            color: var(--teal);
+
+            font-size:
+                clamp(
+                    30px,
+                    4vw,
+                    43px
+                );
+
+            line-height: 1.1;
+
+            letter-spacing: -1.2px;
+
+            font-weight: 680;
+        }
+
+
+        .intro p {
+            max-width: 650px;
+
+            margin-top: 12px;
+
+            color: var(--muted);
+
+            font-size: 14px;
+            line-height: 1.65;
+        }
+
+
+        .record-count {
+            color: var(--muted);
+            font-size: 12px;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           SUMMARY
+        ========================================================= */
+
+        .summary-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    4,
+                    minmax(0, 1fr)
+                );
+
+            gap: 13px;
+
+            margin-bottom: 24px;
+        }
+
+
+        .summary-card {
+            padding: 20px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 15px;
+
+            background: var(--white);
+
+            box-shadow:
+                0 1px 2px
+                rgba(24, 60, 58, .025);
+        }
+
+
+        .summary-label {
+            display: block;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            font-weight: 650;
+        }
+
+
+        .summary-value {
+            display: block;
+
+            margin-top: 9px;
+
+            color: var(--teal);
+
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+
+        .summary-card.tb .summary-value {
+            color: #99504b;
+        }
+
+
+        .summary-card.normal .summary-value {
+            color: var(--success);
+        }
+
+
+        .summary-card.failed .summary-value {
+            color: var(--warning);
+        }
+
+
+        /* =========================================================
+           TOOLBAR
+        ========================================================= */
+
+        .toolbar {
+            margin-bottom: 18px;
+
+            padding: 15px;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 14px;
+
+            background: var(--white);
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content:
+                space-between;
+
+            gap: 15px;
+        }
+
+
+        .search-wrap {
+            position: relative;
+
+            flex: 1;
+
+            max-width: 430px;
+        }
+
+
+        .search-wrap svg {
+            position: absolute;
+
+            left: 13px;
+            top: 50%;
+
+            width: 17px;
+            height: 17px;
+
+            transform:
+                translateY(-50%);
+
+            color: var(--muted-2);
+        }
+
+
+        .search-input {
+            width: 100%;
+            height: 42px;
+
+            padding:
+                0 14px
+                0 40px;
+
+            border:
+                1px solid
+                #d8deda;
+
+            border-radius: 10px;
+
+            background: #fbfcfa;
+
+            color: var(--text);
+
+            outline: none;
+
+            font-size: 12px;
+        }
+
+
+        .search-input:focus {
+            border-color: #82a197;
+
+            box-shadow:
+                0 0 0 3px
+                rgba(43, 104, 98, .08);
+        }
+
+
+        .filters {
+            display: flex;
+            gap: 6px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .filter-button {
+            min-height: 36px;
+
+            padding: 0 12px;
+
+            border:
+                1px solid
+                #d5dbd7;
+
+            border-radius: 9px;
+
+            background: white;
+
+            color: var(--muted);
+
+            font-size: 11px;
+            font-weight: 680;
+        }
+
+
+        .filter-button:hover {
+            background: var(--sage-soft);
+        }
+
+
+        .filter-button.active {
+            border-color: var(--teal);
+
+            background: var(--teal);
+
+            color: white;
+        }
+
+
+        /* =========================================================
+           TABLE CARD
+        ========================================================= */
+
+        .database-card {
+            overflow: hidden;
+
+            border:
+                1px solid
+                var(--border);
+
+            border-radius: 17px;
+
+            background: var(--white);
+
+            box-shadow: var(--shadow);
+        }
+
+
+        .table-wrap {
+            overflow-x: auto;
+        }
+
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+
+            min-width: 1050px;
+        }
+
+
+        th {
+            padding: 13px 15px;
+
+            border-bottom:
+                1px solid
+                #e7eae7;
+
+            background: #fafbf9;
+
+            color: var(--muted);
+
+            text-align: left;
+
+            font-size: 10px;
+            font-weight: 750;
+
+            text-transform: uppercase;
+
+            letter-spacing: .04em;
+        }
+
+
+        td {
+            padding: 15px;
+
+            border-bottom:
+                1px solid
+                #eceeea;
+
+            vertical-align: middle;
+        }
+
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+
+        tbody tr:hover {
+            background: #fcfdfb;
+        }
+
+
+        /* =========================================================
+           IMAGES
+        ========================================================= */
+
+        .thumbnail-group {
+            display: flex;
+            gap: 7px;
+        }
+
+
+        .thumbnail {
+            position: relative;
+
+            width: 58px;
+            height: 58px;
+
+            overflow: hidden;
+
+            border:
+                1px solid
+                #d7dcda;
+
+            border-radius: 9px;
+
+            background: #252b2a;
+
+            display: grid;
+            place-items: center;
+        }
+
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+
+            object-fit: cover;
+        }
+
+
+        .thumbnail-label {
+            position: absolute;
+
+            left: 4px;
+            bottom: 4px;
+
+            padding:
+                2px 4px;
+
+            border-radius: 4px;
+
+            background:
+                rgba(
+                    0,
+                    0,
+                    0,
+                    .62
+                );
+
+            color: white;
+
+            font-size: 7px;
+
+            font-weight: 650;
+        }
+
+
+        .thumbnail-placeholder {
+            width: 58px;
+            height: 58px;
+
+            border:
+                1px dashed
+                #d5dad7;
+
+            border-radius: 9px;
+
+            display: grid;
+            place-items: center;
+
+            background: #fafbf9;
+
+            color: var(--muted-2);
+
+            font-size: 8px;
+
+            text-align: center;
+        }
+
+
+        /* =========================================================
+           RECORD INFO
+        ========================================================= */
+
+        .screening-id {
+            color: var(--teal);
+
+            font-size: 12px;
+            font-weight: 720;
+
+            white-space: nowrap;
+        }
+
+
+        .filename {
+            display: block;
+
+            max-width: 160px;
+
+            margin-top: 5px;
+
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+
+            white-space: nowrap;
+
+            color: var(--muted-2);
+
+            font-size: 9px;
+        }
+
+
+        .date {
+            color: var(--text);
+
+            font-size: 11px;
+
+            white-space: nowrap;
+        }
+
+
+        .model {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           BADGES
+        ========================================================= */
+
+        .badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            padding:
+                5px 9px;
+
+            border-radius: 999px;
+
+            font-size: 9px;
+            font-weight: 750;
+
+            white-space: nowrap;
+        }
+
+
+        .result-tb {
+            background: #fff0ef;
+
+            color: #984c47;
+        }
+
+
+        .result-normal {
+            background: var(--success-bg);
+
+            color: var(--success);
+        }
+
+
+        .result-other {
+            background: #f0f1ef;
+
+            color: var(--muted);
+        }
+
+
+        .status-completed {
+            background: var(--success-bg);
+
+            color: var(--success);
+        }
+
+
+        .status-failed {
+            background: var(--danger-bg);
+
+            color: var(--danger);
+        }
+
+
+        .status-processing {
+            background: var(--warning-bg);
+
+            color: var(--warning);
+        }
+
+
+        .confidence {
+            color: var(--teal);
+
+            font-size: 12px;
+            font-weight: 680;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================================================
+           ACTIONS
+        ========================================================= */
+
+        .actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 5px;
+
+            flex-wrap: wrap;
+        }
+
+
+        .action {
+            min-height: 31px;
+
+            padding: 0 9px;
+
+            border:
+                1px solid
+                #d6dcd8;
+
+            border-radius: 7px;
+
+            display: inline-flex;
+
+            align-items: center;
+
+            background: white;
+
+            color: var(--teal-2);
+
+            font-size: 9px;
+            font-weight: 680;
+        }
+
+
+        .action:hover {
+            background: var(--sage-soft);
+        }
+
+
+        .delete-form {
+            display: inline;
+        }
+
+
+        .action.delete {
+            color: var(--danger);
+
+            border-color: #ead3d1;
+
+            background: #fffafa;
+        }
+
+
+        .action.delete:hover {
+            background: var(--danger-bg);
+        }
+
+
+        /* =========================================================
+           EMPTY
+        ========================================================= */
+
+        .empty {
+            display: none;
+
+            padding: 65px 20px;
+
+            text-align: center;
+        }
+
+
+        .empty.visible {
+            display: block;
+        }
+
+
+        .empty h3 {
+            color: var(--teal);
+
+            font-size: 17px;
+        }
+
+
+        .empty p {
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: 11px;
+        }
+
+
+        .original-empty {
+            padding: 65px 20px;
+
+            text-align: center;
+        }
+
+
+        .original-empty h3 {
+            color: var(--teal);
+        }
+
+
+        .original-empty p {
+            margin-top: 8px;
+
+            color: var(--muted);
+
+            font-size: 12px;
+        }
+
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (
+            max-width: 900px
+        ) {
+
+            .summary-grid {
+                grid-template-columns:
+                    repeat(
+                        2,
+                        1fr
+                    );
+            }
+
+
+            .toolbar {
+                align-items: stretch;
+
+                flex-direction: column;
+            }
+
+
+            .search-wrap {
+                max-width: none;
+            }
+
+        }
+
+
+        @media (
+            max-width: 600px
+        ) {
+
+            .header-inner,
+            .page {
+                width:
+                    calc(
+                        100% - 28px
+                    );
+            }
+
+
+            .header-inner {
+                min-height: 72px;
+            }
+
+
+            .brand-subtitle {
+                display: none;
+            }
+
+
+            .intro {
+                align-items: flex-start;
+
+                flex-direction: column;
+            }
+
+
+            .summary-grid {
+                grid-template-columns:
+                    1fr 1fr;
+
+                gap: 9px;
+            }
+
+
+            .summary-card {
+                padding: 15px;
+            }
+
+
+            .summary-value {
+                font-size: 24px;
+            }
+
+
+            .page {
+                padding-top: 35px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================== -->
+
+<header class="site-header">
+
+    <div class="header-inner">
+
+
+        <div class="brand">
+
+
+            <div class="brand-mark">
+
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.7"
+                    stroke-linecap="round"
+                >
+
+                    <path d="M12 3v18"></path>
+
+                    <path
+                        d="M8 7c-2.8 0-5 2.4-5 5.3 0 3.5 2.1 6.1 5.3 6.8 1.5.3 2.7-.8 2.7-2.3V9.2C11 8 9.8 7 8 7Z"
+                    ></path>
+
+                    <path
+                        d="M16 7c2.8 0 5 2.4 5 5.3 0 3.5-2.1 6.1-5.3 6.8-1.5.3-2.7-.8-2.7-2.3V9.2C13 8 14.2 7 16 7Z"
+                    ></path>
+
+                </svg>
+
+            </div>
+
+
+            <div>
+
+                <span class="brand-name">
+                    TB Guard
+                </span>
+
+                <span class="brand-subtitle">
+                    Explainable tuberculosis screening
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="header-actions">
+
+            <a
+                href="{{ url_for('index') }}"
+                class="header-link"
+            >
+                ← New screening
+            </a>
+
+        </div>
+
+
+    </div>
+
+</header>
+
+
+<!-- =========================================================
+     MAIN
+========================================================== -->
+
+<main class="page">
+
+
+    <section class="intro">
+
+        <div>
+
+            <span class="kicker">
+                Local screening records
+            </span>
+
+            <h1>
+                Screening database
+            </h1>
+
+            <p>
+                Review previous tuberculosis screenings,
+                inspect saved X-rays and Grad-CAM explanations,
+                or download and manage individual records.
+            </p>
+
+        </div>
+
+
+        <span
+            class="record-count"
+            id="visibleCount"
+        >
+            {{ stats.total }} records
+        </span>
+
+    </section>
+
+
+    <!-- =====================================================
+         SUMMARY
+    ====================================================== -->
+
+    <section class="summary-grid">
+
+
+        <div class="summary-card">
+
+            <span class="summary-label">
+                Total screenings
+            </span>
+
+            <strong class="summary-value">
+                {{ stats.total }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card tb">
+
+            <span class="summary-label">
+                TB detected
+            </span>
+
+            <strong class="summary-value">
+                {{ stats.tb }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card normal">
+
+            <span class="summary-label">
+                Normal
+            </span>
+
+            <strong class="summary-value">
+                {{ stats.normal }}
+            </strong>
+
+        </div>
+
+
+        <div class="summary-card failed">
+
+            <span class="summary-label">
+                Failed
+            </span>
+
+            <strong class="summary-value">
+                {{ stats.failed }}
+            </strong>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         TOOLBAR
+    ====================================================== -->
+
+    <section class="toolbar">
+
+
+        <div class="search-wrap">
+
+            <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+            >
+                <circle
+                    cx="11"
+                    cy="11"
+                    r="7"
+                ></circle>
+
+                <path
+                    d="m20 20-3.5-3.5"
+                ></path>
+            </svg>
+
+
+            <input
+                type="search"
+                id="searchInput"
+                class="search-input"
+                placeholder="Search screening ID, filename, result or model..."
+                autocomplete="off"
+            >
+
+        </div>
+
+
+        <div class="filters">
+
+            <button
+                type="button"
+                class="filter-button active"
+                data-filter="all"
+            >
+                All
+            </button>
+
+            <button
+                type="button"
+                class="filter-button"
+                data-filter="tb"
+            >
+                TB
+            </button>
+
+            <button
+                type="button"
+                class="filter-button"
+                data-filter="normal"
+            >
+                Normal
+            </button>
+
+            <button
+                type="button"
+                class="filter-button"
+                data-filter="failed"
+            >
+                Failed
+            </button>
+
+        </div>
+
+
+    </section>
+
+
+    <!-- =====================================================
+         DATABASE
+    ====================================================== -->
+
+    <section class="database-card">
+
+
+        {% if screenings %}
+
+
+        <div
+            class="table-wrap"
+            id="tableWrap"
+        >
+
+            <table>
+
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Images
+                        </th>
+
+                        <th>
+                            Screening
+                        </th>
+
+                        <th>
+                            Date
+                        </th>
+
+                        <th>
+                            Result
+                        </th>
+
+                        <th>
+                            Confidence
+                        </th>
+
+                        <th>
+                            Status
+                        </th>
+
+                        <th>
+                            Model
+                        </th>
+
+                        <th>
+                            Actions
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="databaseRows">
+
+
+                    {% for screening in screenings %}
+
+
+                    <tr
+                        class="screening-row"
+
+                        data-category="{{ screening.result_category }}"
+
+                        data-status="{{ screening.status|lower }}"
+
+                        data-search="
+                            {{ screening.screening_id }}
+                            {{ screening.original_filename }}
+                            {{ screening.prediction or '' }}
+                            {{ screening.model_name or '' }}
+                            {{ screening.status or '' }}
+                        "
+                    >
+
+
+                        <!-- IMAGES -->
+
+                        <td>
+
+                            <div class="thumbnail-group">
+
+
+                                {% if screening.stored_filename %}
+
+                                <a
+                                    href="{{ url_for('view_original', filename=screening.stored_filename) }}"
+                                    target="_blank"
+                                    class="thumbnail"
+                                    title="View original X-ray"
+                                >
+
+                                    <img
+                                        src="{{ url_for('view_original', filename=screening.stored_filename) }}"
+                                        alt="Original chest X-ray"
+                                        loading="lazy"
+                                    >
+
+                                    <span class="thumbnail-label">
+                                        Original
+                                    </span>
+
+                                </a>
+
+                                {% endif %}
+
+
+                                {% if screening.gradcam_filename %}
+
+                                <a
+                                    href="{{ url_for('view_gradcam', filename=screening.gradcam_filename) }}"
+                                    target="_blank"
+                                    class="thumbnail"
+                                    title="View Grad-CAM image"
+                                >
+
+                                    <img
+                                        src="{{ url_for('view_gradcam', filename=screening.gradcam_filename) }}"
+                                        alt="Grad-CAM explanation"
+                                        loading="lazy"
+                                    >
+
+                                    <span class="thumbnail-label">
+                                        Grad-CAM
+                                    </span>
+
+                                </a>
+
+
+                                {% else %}
+
+                                <div class="thumbnail-placeholder">
+
+                                    No
+                                    <br>
+                                    Grad-CAM
+
+                                </div>
+
+                                {% endif %}
+
+
+                            </div>
+
+                        </td>
+
+
+                        <!-- SCREENING -->
+
+                        <td>
+
+                            <span class="screening-id">
+                                {{ screening.screening_id }}
+                            </span>
+
+                            <span
+                                class="filename"
+                                title="{{ screening.original_filename }}"
+                            >
+                                {{ screening.original_filename }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- DATE -->
+
+                        <td>
+
+                            <time
+                                class="date screening-date"
+                                data-time="{{ screening.created_at }}"
+                            >
+                                {{ screening.created_at }}
+                            </time>
+
+                        </td>
+
+
+                        <!-- RESULT -->
+
+                        <td>
+
+                            {% if screening.result_category == "tb" %}
+
+                            <span class="badge result-tb">
+                                Tuberculosis
+                            </span>
+
+
+                            {% elif screening.result_category == "normal" %}
+
+                            <span class="badge result-normal">
+                                Normal
+                            </span>
+
+
+                            {% elif screening.status == "failed" %}
+
+                            <span class="badge result-other">
+                                No result
+                            </span>
+
+
+                            {% else %}
+
+                            <span class="badge result-other">
+                                {{ screening.prediction or "Pending" }}
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- CONFIDENCE -->
+
+                        <td>
+
+                            {% if screening.confidence is not none %}
+
+                            <span class="confidence">
+
+                                {{
+                                    "%.2f"|format(
+                                        screening.confidence * 100
+                                    )
+                                }}%
+
+                            </span>
+
+                            {% else %}
+
+                            <span class="model">
+                                —
+                            </span>
+
+                            {% endif %}
+
+                        </td>
+
+
+                        <!-- STATUS -->
+
+                        <td>
+
+                            <span
+                                class="
+                                    badge
+                                    status-{{ screening.status|lower }}
+                                "
+                            >
+                                {{ screening.status|capitalize }}
+                            </span>
+
+                        </td>
+
+
+                        <!-- MODEL -->
+
+                        <td>
+
+                            <span class="model">
+
+                                {{ screening.model_name or "—" }}
+
+                                {% if screening.model_version %}
+
+                                v{{ screening.model_version }}
+
+                                {% endif %}
+
+                            </span>
+
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td>
+
+                            <div class="actions">
+
+
+                                <a
+                                    class="action"
+                                    href="{{ url_for('screening_result', screening_id=screening.screening_id) }}"
+                                >
+                                    View
+                                </a>
+
+
+                                <a
+                                    class="action"
+                                    href="{{ url_for('download_original', screening_id=screening.screening_id) }}"
+                                >
+                                    Original ↓
+                                </a>
+
+
+                                {% if screening.gradcam_path %}
+
+                                <a
+                                    class="action"
+                                    href="{{ url_for('download_gradcam', screening_id=screening.screening_id) }}"
+                                >
+                                    Grad-CAM ↓
+                                </a>
+
+                                {% endif %}
+
+
+                                <a
+                                    class="action"
+                                    href="{{ url_for('download_record', screening_id=screening.screening_id) }}"
+                                >
+                                    CSV ↓
+                                </a>
+
+
+                                <form
+                                    method="POST"
+
+                                    class="delete-form"
+
+                                    action="{{ url_for('remove_screening', screening_id=screening.screening_id) }}"
+
+                                    onsubmit="
+                                        return confirm(
+                                            'Delete screening {{ screening.screening_id }} and its stored images?'
+                                        );
+                                    "
+                                >
+
+                                    <button
+                                        type="submit"
+                                        class="action delete"
+                                    >
+                                        Delete
+                                    </button>
+
+                                </form>
+
+
+                            </div>
+
+                        </td>
+
+
+                    </tr>
+
+
+                    {% endfor %}
+
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+
+        <div
+            class="empty"
+            id="filterEmpty"
+        >
+
+            <h3>
+                No matching screenings
+            </h3>
+
+            <p>
+                Try changing the search term or selected filter.
+            </p>
+
+        </div>
+
+
+        {% else %}
+
+
+        <div class="original-empty">
+
+            <h3>
+                No screening records yet
+            </h3>
+
+            <p>
+                Completed and failed screenings will appear here.
+            </p>
+
+        </div>
+
+
+        {% endif %}
+
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+    /* =========================================================
+       SEARCH + FILTER
+    ========================================================= */
+
+    const rows =
+        Array.from(
+            document.querySelectorAll(
+                ".screening-row"
+            )
+        );
+
+
+    const searchInput =
+        document.getElementById(
+            "searchInput"
+        );
+
+
+    const filterButtons =
+        document.querySelectorAll(
+            ".filter-button"
+        );
+
+
+    const emptyState =
+        document.getElementById(
+            "filterEmpty"
+        );
+
+
+    const tableWrap =
+        document.getElementById(
+            "tableWrap"
+        );
+
+
+    const visibleCount =
+        document.getElementById(
+            "visibleCount"
+        );
+
+
+    let activeFilter =
+        "all";
+
+
+    function applyFilters() {
+
+        const query =
+            searchInput
+                ? searchInput
+                    .value
+                    .trim()
+                    .toLowerCase()
+                : "";
+
+
+        let visible =
+            0;
+
+
+        rows.forEach(
+            function (
+                row
+            ) {
+
+                const searchText =
+                    (
+                        row.dataset.search
+                        ||
+                        ""
+                    )
+                    .toLowerCase();
+
+
+                const category =
+                    row.dataset.category;
+
+
+                const status =
+                    row.dataset.status;
+
+
+                const matchesSearch =
+                    searchText.includes(
+                        query
+                    );
+
+
+                let matchesFilter =
+                    true;
+
+
+                if (
+                    activeFilter ===
+                    "tb"
+                ) {
+
+                    matchesFilter =
+                        category ===
+                        "tb";
+
+                }
+
+
+                else if (
+                    activeFilter ===
+                    "normal"
+                ) {
+
+                    matchesFilter =
+                        category ===
+                        "normal";
+
+                }
+
+
+                else if (
+                    activeFilter ===
+                    "failed"
+                ) {
+
+                    matchesFilter =
+                        status ===
+                        "failed";
+
+                }
+
+
+                const show =
+                    matchesSearch
+                    &&
+                    matchesFilter;
+
+
+                row.style.display =
+                    show
+                        ? ""
+                        : "none";
+
+
+                if (
+                    show
+                ) {
+
+                    visible++;
+
+                }
+
+            }
+        );
+
+
+        if (
+            visibleCount
+        ) {
+
+            visibleCount.textContent =
+                visible
+                +
+                (
+                    visible === 1
+                        ? " record"
+                        : " records"
+                );
+
+        }
+
+
+        if (
+            emptyState
+            &&
+            tableWrap
+        ) {
+
+            if (
+                visible === 0
+            ) {
+
+                emptyState
+                    .classList
+                    .add(
+                        "visible"
+                    );
+
+                tableWrap.style.display =
+                    "none";
+
+            }
+
+            else {
+
+                emptyState
+                    .classList
+                    .remove(
+                        "visible"
+                    );
+
+                tableWrap.style.display =
+                    "";
+
+            }
+
+        }
+
+    }
+
+
+    if (
+        searchInput
+    ) {
+
+        searchInput.addEventListener(
+            "input",
+            applyFilters
+        );
+
+    }
+
+
+    filterButtons.forEach(
+        function (
+            button
+        ) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    filterButtons.forEach(
+                        function (
+                            item
+                        ) {
+
+                            item
+                                .classList
+                                .remove(
+                                    "active"
+                                );
+
+                        }
+                    );
+
+
+                    button
+                        .classList
+                        .add(
+                            "active"
+                        );
+
+
+                    activeFilter =
+                        button.dataset.filter;
+
+
+                    applyFilters();
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =========================================================
+       DISPLAY SQLITE UTC TIMES IN BROWSER LOCAL TIME
+    ========================================================= */
+
+    document
+        .querySelectorAll(
+            ".screening-date"
+        )
+        .forEach(
+            function (
+                element
+            ) {
+
+                const stored =
+                    element.dataset.time;
+
+
+                if (
+                    !stored
+                ) {
+
+                    return;
+
+                }
+
+
+                const parsed =
+                    new Date(
+                        stored
+                            .replace(
+                                " ",
+                                "T"
+                            )
+                        +
+                        "Z"
+                    );
+
+
+                if (
+                    !Number.isNaN(
+                        parsed.getTime()
+                    )
+                ) {
+
+                    element.textContent =
+                        parsed.toLocaleString(
+                            [],
+                            {
+                                year:
+                                    "numeric",
+
+                                month:
+                                    "short",
+
+                                day:
+                                    "2-digit",
+
+                                hour:
+                                    "2-digit",
+
+                                minute:
+                                    "2-digit"
+                            }
+                        );
+
+                }
+
+            }
+        );
+
+</script>
+
+
+</body>
+
+</html>
