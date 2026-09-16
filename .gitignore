@@ -70,3 +70,4 @@ gradcam_overlay_*.png
 
 .vscode/
 .DS_Store
+gradcam_test_images/

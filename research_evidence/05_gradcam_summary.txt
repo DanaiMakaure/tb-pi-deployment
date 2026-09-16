@@ -1,0 +1,65 @@
+
+======================================
+TB GUARD - GRAD-CAM CONSISTENCY SUMMARY
+======================================
+
+Test completed:
+2026-09-16T20:30:51.591099
+
+Images tested:
+20
+
+Warning threshold:
+0.0100
+
+Failure threshold:
+0.0500
+
+--------------------------------------
+CONSISTENCY RESULTS
+--------------------------------------
+
+PASS:
+20
+
+PASS WITH WARNING:
+0
+
+FAILED:
+0
+
+PROCESSING ERRORS:
+0
+
+Class disagreements:
+0
+
+--------------------------------------
+GRAD-CAM AVAILABILITY
+--------------------------------------
+
+Explanation available:
+20 / 20
+
+Availability rate:
+100.00%
+
+--------------------------------------
+PROBABILITY DIFFERENCE
+--------------------------------------
+
+Mean absolute difference:
+0.001894
+
+Median absolute difference:
+0.001025
+
+Maximum absolute difference:
+0.006929
+
+--------------------------------------
+
+A Grad-CAM explanation is considered available only
+when the authoritative prediction model and the
+reconstructed Grad-CAM classification path satisfy
+the deployed consistency safety checks.

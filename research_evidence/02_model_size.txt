@@ -1,0 +1,19 @@
+======================================
+TB GUARD - DEPLOYMENT ARTIFACT SIZES
+======================================
+
+File: mobilenetv3_tb_pi.tflite
+Bytes: 12,874,664
+MiB: 12.28
+
+File: mobilenetv3_features_pi.tflite
+Bytes: 11,892,352
+MiB: 11.34
+
+File: mobilenetv3_gradcam_head.npz
+Bytes: 986,058
+MiB: 0.94
+
+--------------------------------------
+Total deployment artifacts: 25,753,074 bytes
+Total deployment artifacts: 24.56 MiB

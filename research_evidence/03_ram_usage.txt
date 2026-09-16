@@ -1,0 +1,31 @@
+======================================
+TB GUARD - RAM MEASUREMENT
+======================================
+
+===== BEFORE TB GUARD STARTS =====
+Wed 16 Sep 2026 07:57:51 PM SAST
+
+               total        used        free      shared  buff/cache   available
+Mem:            3838         868        1645         158        1324        2669
+Swap:             99           0          99
+
+===== TB GUARD RUNNING - IDLE =====
+Wed 16 Sep 2026 08:02:55 PM SAST
+
+System memory:
+               total        used        free      shared  buff/cache   available
+Mem:            3838         940        1572         159        1325        2597
+Swap:             99           0          99
+
+TB Guard process memory:
+  PID     ELAPSED   RSS    VSZ %MEM CMD
+ 4047       02:40 91112 330020  2.3 python app.py
+
+===== X-RAY SCREENING RAM TEST =====
+Test completed: 2026-09-16T20:06:29.951068
+Samples collected: 338
+Sampling interval: 0.25 seconds
+Pre-screen minimum RSS: 88.67 MiB
+Peak TB Guard RSS: 92.36 MiB
+Peak occurred at: 51.94 seconds
+System used memory at peak: 1197.73 MiB
