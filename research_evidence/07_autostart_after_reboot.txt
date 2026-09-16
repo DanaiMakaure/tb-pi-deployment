@@ -1,0 +1,21 @@
+======================================
+TB GUARD - AUTO START AFTER REBOOT
+======================================
+
+Test time:
+Wed 16 Sep 2026 09:25:35 PM SAST
+
+System uptime:
+ 21:25:35 up 8 min,  2 users,  load average: 0.68, 0.74, 0.43
+
+Service enabled:
+enabled
+
+Service active:
+active
+
+Process:
+552 /home/kingly/tb-pi-deployment/.venv/bin/python /home/kingly/tb-pi-deployment/app.py
+
+Local HTTP test:
+HTTP 200

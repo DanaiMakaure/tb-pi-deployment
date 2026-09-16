@@ -1,0 +1,18 @@
+======================================
+TB GUARD - AUTO START BEFORE REBOOT
+======================================
+
+Test time:
+Wed 16 Sep 2026 09:15:36 PM SAST
+
+Service enabled:
+enabled
+
+Service active:
+active
+
+Process:
+4613 /home/kingly/tb-pi-deployment/.venv/bin/python /home/kingly/tb-pi-deployment/app.py
+
+Local HTTP test:
+HTTP 200

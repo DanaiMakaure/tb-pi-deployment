@@ -1,0 +1,24 @@
+======================================
+TB GUARD - SQLITE BACKUP/RECOVERY TEST
+======================================
+
+Test completed: 2026-09-16T21:33:51.352737
+
+Live database: /home/kingly/tb-pi-deployment/screening.db
+Backup database: backups/point9_verification_backup.db
+Restored test database: backups/point9_restored_test.db
+
+Live integrity: ok
+Backup integrity: ok
+Restored integrity: ok
+
+Backup table counts match live DB: True
+Restored table counts match backup: True
+
+===== TABLE COUNTS =====
+screenings: 14
+
+Backup SHA-256: 40693b434a9e89537855a8c55f8d532a12c71bcd1fe48218b2a8a6d4814f23aa
+Restored SHA-256: 40693b434a9e89537855a8c55f8d532a12c71bcd1fe48218b2a8a6d4814f23aa
+
+FINAL RESULT: PASS

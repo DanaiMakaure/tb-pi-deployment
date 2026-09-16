@@ -1,0 +1,20 @@
+[Unit]
+Description=TB Guard Tuberculosis Screening Web Application
+After=network.target
+
+[Service]
+Type=simple
+User=kingly
+Group=kingly
+
+WorkingDirectory=/home/kingly/tb-pi-deployment
+
+Environment="PYTHONUNBUFFERED=1"
+
+ExecStart=/home/kingly/tb-pi-deployment/.venv/bin/python /home/kingly/tb-pi-deployment/app.py
+
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=multi-user.target

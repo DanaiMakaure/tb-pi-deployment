@@ -1,0 +1,22 @@
+======================================
+TB GUARD - OFFLINE RECOVERY BUNDLE
+======================================
+
+Test date:
+Wed 16 Sep 2026 10:10:08 PM SAST
+
+Recovery guide: PRESENT
+Application files: PRESENT
+Model artifacts: PRESENT
+Offline Python packages: PRESENT
+TFLite ARMv7l wheel: PRESENT
+Offline dependency installation: PASS
+Integrity manifest: PRESENT
+
+Archive:
+-rw-r--r-- 1 kingly kingly 83M Sep 16 22:09 tb_guard_offline_recovery_2026-09-16.tar.gz
+
+Archive SHA-256:
+d4973d35588bb6e6924f5eaa21ddea53b62bcc7cc4b61db1b303167933b8042b  tb_guard_offline_recovery_2026-09-16.tar.gz
+
+FINAL RESULT: PASS

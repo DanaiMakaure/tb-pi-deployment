@@ -71,3 +71,15 @@ gradcam_overlay_*.png
 .vscode/
 .DS_Store
 gradcam_test_images/
+backups/
+
+# TB Guard private/runtime data
+screening.db
+screenings/
+uploads/
+gradcam_test_images/
+backups/
+
+# Large offline recovery bundle
+tb_guard_offline_recovery/
+tb_guard_offline_recovery_*.tar.gz

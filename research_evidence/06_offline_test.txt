@@ -1,0 +1,23 @@
+======================================
+TB GUARD - OFFLINE OPERATION TEST
+======================================
+
+Test time:
+Wed 16 Sep 2026 08:43:32 PM SAST
+
+===== LOCAL NETWORK =====
+10.10.20.23 
+
+===== INTERNET CONNECTIVITY =====
+RESULT: INTERNET STILL AVAILABLE
+
+===== LOCAL TB GUARD =====
+Local HTTP response: 200
+RESULT: TB GUARD AVAILABLE LOCALLY
+
+===== FULL OFFLINE SCREENING =====
+Full X-ray screening completed while internet was disconnected: YES
+Prediction generated locally: YES
+Local web application remained operational: YES
+Test completed:
+Wed 16 Sep 2026 08:46:49 PM SAST
